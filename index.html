@@ -20,9 +20,15 @@
                     $("#citation").html(data.value.joke);
                 })
             }
+            function getCitationFR() {
+                $.getJSON("http://localhost:8888/chuck/citations.php", function (data) {
+                    //console.log(data);
+                    $("#citation").html(data);
+                })
+            }
             const changer = $("#changer");
-            changer.on("click", getCitation);
-            getCitation();
+            changer.on("click", getCitationFR);
+            getCitationFR();
         })
 
     </script>
