@@ -14,18 +14,15 @@
     <script>
         
         $(function() {
-            function getCitation() {
-                $.getJSON("http://api.icndb.com/jokes/random", function (data) {
-                    //console.log(data.value.joke);
-                    $("#citation").html(data.value.joke);
-                })
-            }
+            
             function getCitationFR() {
-                $.getJSON("http://localhost:8888/chuck/citations.php", function (data) {
-                    //console.log(data);
-                    $("#citation").html(data);
+                $.getJSON("http://localhost:8888/chuck/citation.php", function (data) {
+                    console.log(typeof data);
+                    console.dir(data);
+                    $("#citation").html(data.texte);
                 })
             }
+            
             const changer = $("#changer");
             changer.on("click", getCitationFR);
             getCitationFR();
