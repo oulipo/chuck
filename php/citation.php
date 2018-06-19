@@ -1,5 +1,5 @@
 <?php 
-include("lib/connexion.php");
+include("../lib/connexion.php");
 
 function citationAuHasard($dbh) {
     $stmt = $dbh->prepare("SELECT * FROM citations ORDER BY RAND() LIMIT 1");

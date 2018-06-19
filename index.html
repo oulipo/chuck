@@ -19,31 +19,27 @@
     <link href="css/cover.css" rel="stylesheet">
 </head>
 
-<body class="text-center">
+<body>
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
                 <h3 class="masthead-brand">Chuck Norris Facts</h3>
                 <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link active" href="#">Home</a>
-                    <a class="nav-link" href="#">Recherche</a>
-                    <a class="nav-link" href="#">Ajouter</a>
+                    <a class="nav-link active" href="#" data-link="home">Home</a>
+                    <a class="nav-link" href="#" data-link="recherche">Recherche</a>
+                    <a class="nav-link" href="#" data-link="ajouter">Ajouter</a>
                 </nav>
             </div>
         </header>
 
         <main role="main" class="inner cover">
-            <h1 class="cover-heading">Fact</h1>
-            <p class="lead" id="texte">...</p>
-            <p class="lead">
-                <a href="#" class="btn btn-lg btn-secondary" id="autre">Une autre ?</a>
-            </p>
+            
         </main>
 
-        <footer class="mastfoot mt-auto">
+        <footer class="mastfoot mt-auto text-center">
             <div class="inner">
-                <p>⚡️ Powered by Chuck Norris 💪🏻</p>
+                <p>⚡️Powered by Chuck Norris 💪🏻</p>
             </div>
         </footer>
     </div>
@@ -57,24 +53,17 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-
     <script>
-
-        $(function () {
-
-            function getCitationFR() {
-                $.getJSON("https://dry-sands-32165.herokuapp.com/", function (data) {
-                    console.log(typeof data);
-                    console.dir(data);
-                    $("#texte").html(data.texte);
-                })
-            }
-
-            const changer = $("#autre");
-            changer.on("click", getCitationFR);
-            getCitationFR();
+        $(function() {
+            $("main").load("partials/home.html")
+            $(".nav-link").on("click", function (e) {
+                e.preventDefault();
+                $(".nav-link").removeClass("active");
+                let lien = $(this).data("link");
+                $("main").load("partials/"+lien+".html");
+                $(this).addClass("active");
+            })
         })
-
     </script>
 </body>
 

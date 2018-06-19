@@ -1,0 +1,19 @@
+<div class="text-center">
+    <h1 class="cover-heading">Fact</h1>
+    <p class="lead" id="texte">...</p>
+    <p class="lead">
+        <a href="#" class="btn btn-lg btn-secondary" id="autre">Une autre ?</a>
+    </p>
+</div>
+<script>
+    $(function () {
+        function getCitationFR() {
+            $.getJSON("https://dry-sands-32165.herokuapp.com/", function (data) {
+                $("#texte").html(data.texte);
+            })
+        }
+        const changer = $("#autre");
+        changer.on("click", getCitationFR);
+        getCitationFR();
+    })
+</script>

@@ -1,0 +1,27 @@
+<form>
+    <div class="form-group">
+        <label for="texte">Chuck Fact à ajouter</label>
+        <textarea class="form-control" name="texte" id="texte" rows="3"></textarea>
+    </div>
+    <button class="btn btn-primary">👊🏻 Chucker</button>&nbsp;<small id="resultat" style="color: greenyellow;"></small>
+</form>
+
+<script>
+    $("form").on("submit", function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "php/ajouter.php",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function (result) {
+                if (result.status === "OK") {
+                    $("#resultat").html("Le texte a été ajouté. Son ID = " + result.id);
+                    $("form")[0].reset();
+                } else {
+                    console.log("Problème...");
+                }
+            }
+        })
+    })
+</script>

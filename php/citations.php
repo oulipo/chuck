@@ -1,5 +1,5 @@
 <?php 
-include("lib/connexion.php");
+include("../lib/connexion.php");
 $q = $_GET["q"] ?? "";
 
 function citations($dbh, $q = "") {

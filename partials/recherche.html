@@ -1,0 +1,20 @@
+<form>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Recherche" id="recherche">
+    </div>
+</form>
+<ol class="list-group" id="liste"></ol>
+
+<script>
+    function recherche() {
+        $.getJSON("php/citations.php?q=" + $("#recherche").val(), function (data) {
+            liste = $("#liste");
+            liste.empty();
+            data.forEach(function (citation) {
+                liste.append('<li class="list - group - item">' + citation.texte + '</li>');
+            })
+        })
+    }
+    recherche();
+    $("#recherche").on("keyup", recherche);
+</script>
