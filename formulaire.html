@@ -11,7 +11,7 @@
         <textarea name="texte" id="texte" cols="30" rows="10"></textarea><br>
         <button id="ajouter">Ajouter</button>
     </form>
-    <p>La citation a bien été ajoutée ; son id = ??</p>
+    <p id="resultat"></p>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -22,12 +22,14 @@
                 type: "POST",
                 url: "ajouter.php",
                 data: $("form").serialize(),
+                dataType: "json",
                 success: function(result) {
-                    if("OK" === result) {
-                        console.log("OK");
+                    console.log(result);
+                    if(result.status === "OK") {
+                        $("#resultat").html("Le texte a été ajouté. Son ID = " + result.id);
                         $("form")[0].reset();
                     } else {
-                        console.log("NOK");
+                        $("#resultat").html("Problème...");
                     }
                 }
             })

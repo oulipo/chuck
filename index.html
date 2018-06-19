@@ -1,33 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chuck</title>
-</head>
-<body>
-    <p id="citation">XXX</p>
-    <button id="changer">ANOTHER</button>
+<!doctype html>
+<html lang="fr">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Chuck Norris Facts</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/cover.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">Chuck Norris Facts</h3>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link" href="#">Recherche</a>
+                    <a class="nav-link" href="#">Ajouter</a>
+                </nav>
+            </div>
+        </header>
+
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading">Fact</h1>
+            <p class="lead" id="texte">...</p>
+            <p class="lead">
+                <a href="#" class="btn btn-lg btn-secondary" id="autre">Une autre ?</a>
+            </p>
+        </main>
+
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+                <p>⚡️ Powered by Chuck Norris 💪🏻</p>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
     <script>
-        
-        $(function() {
-            
+
+        $(function () {
+
             function getCitationFR() {
-                $.getJSON("http://localhost:8888/chuck/citation.php", function (data) {
+                $.getJSON("https://dry-sands-32165.herokuapp.com/", function (data) {
                     console.log(typeof data);
                     console.dir(data);
-                    $("#citation").html(data.texte);
+                    $("#texte").html(data.texte);
                 })
             }
-            
-            const changer = $("#changer");
+
+            const changer = $("#autre");
             changer.on("click", getCitationFR);
             getCitationFR();
         })
 
     </script>
 </body>
+
 </html>
